@@ -98,16 +98,128 @@ export const defaultTheme = {
 
 <h2 id="tipagem_temas">Tipagem de Temas</h2>
 
+Podemos sobrescrever a tipagem de uma biblioteca existente.
+
+**src/@types/styled.d.ts**
+~~~~ts
+import "styled-components";
+import { defaultTheme } from "../styles/themes/style";
+
+type ThemeType = typeof defaultTheme;
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends ThemeType {}
+}
+~~~~
+
 <hr/>
 
 <h2 id="estilos_globais">Estilos Globais</h2>
+
+Definição de estilo para toda aplicação com `createGlobalStyle` do `style-components`
+
+**./src/styles/global.ts**
+~~~~ts
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+  }
+
+  body {
+    background-color: #333;
+    color: #fff;
+  }
+`;
+~~~~
 
 <hr/>
 
 <h2 id="cores_fonte">Cores & Fontes</h2>
 
+Fontes foram importadas do googlefontes no arquivo do index.html
+
+~~~~html
+  <meta charset="UTF-8" />
+
+  <!-- É recomendado que links preconnect ficam no topo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@700&display=swap"
+    rel="stylesheet">
+~~~~
+
+~~~~ts
+export const defaultTheme = {
+  white: '#FFF',
+
+  'gray-100': '#E1E1E6',
+  'gray-300': '#C4C4CC',
+  'gray-400': '#8D8D99',
+  'gray-500': '#7C7C8A',
+  'gray-600': '#323238',
+  'gray-700': '#29292E',
+  'gray-800': '#202024',
+  'gray-900': '#121214',
+
+  'green-300': '#00B37E',
+  'green-500': '#00875F',
+  'green-700': '#015F43',
+
+  'red-500': '#AB222E',
+  'red-700': '#7A1921',
+
+  'yellow-500': '#FBA94C',
+}
+~~~~
+
 <hr/>
 
 <h2 id="eslint">Configurações do Eslint</h2>
 
+Lint valida o código para seguir os padrões do criador do projeto.
+Defini padrão de código
+Recomendado instalar extensão do Eslint
+E instalar o eslint como dependência dev
 
+`npm i eslint -D`
+
+Também pode usar configurações eslint de outros criadores, neste projeto foi aplica a configuração eslint da Rocketseat
+
+`npm i @rocketseat/eslint-config`
+
+Para criar a própria configuração do Eslint rode o comando
+
+`npm eslint --init`
+
+Cria um arquivo na raiz `.eslintrc.json`
+
+~~~~json
+{
+  //essa configuração da rocketseat tem vários tipo de extensão pra vue, next, react
+  "extends": "@rocketseat/eslint-config/react"
+}
+~~~~
+
+#### Usando o eslint
+
+Para usar o eslint rode o commando com as ultimas sendo as extensões finais dos arquivos
+
+`npx eslint src --ext .ts, .tsx`
+
+Esse commando mostrará todos os erros de padrão quem tem no código. Para consertar todos eles de uma vez, usa o commando
+
+`npx eslint src --fix`
+
+Uma dica DEV, usar o commando do eslint como Script de commando.
+~~~~json
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts, .tsx"
+  },
+~~~~
