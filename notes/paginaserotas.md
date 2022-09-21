@@ -57,3 +57,41 @@ export function App() {
 }
 
 ~~~~
+
+----------
+
+<h2 id="layoutDeRotas">Layout de Rotas</h2>
+
+Existem várias de formas de colocar as rotas no App.
+
+Uma delas é criar um Layout padrão, e usar o `Outlet` do Router-Dom, um espaço pra ser inserido o conteúdo especifico de uma página
+
+**src/layouts/DefaultLayout.tsx**
+~~~~tsx
+import { Outlet } from 'react-router-dom'
+import { Header } from '../components/Header'
+
+export function DefaultLayout() {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  )
+}
+~~~~
+
+No arquivo Rotas, o DefaultLayout englobamos as rotas. De forma que para acessar as rotas que já tinha antes, será preciso passar pelo DefaultLayout.
+
+~~~~tsx
+export function Router() {
+  return (
+    <Routes>
+      <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/history" element={<History />} />
+      </Route>
+    </Routes>
+  )
+}
+~~~~
