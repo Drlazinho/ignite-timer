@@ -4,7 +4,7 @@
 <li><a href="#routerdom">React Router Dom</a></li>
 <li><a href="#headerENavLink">Header e Navlink</a></li>
 <li><a href="#Home">Styled-components - um component herdando de outro</a></li>
-<li><a href="#paginaHome">Estilos Globais</a></li>
+<li><a href="#inputs">Aprimorando Inputs</a></li>
 <li><a href="#paginaHistory">Cores & Fonte</a></li>
 <li><a href="#status">Configuração Eslint</a></li>
 </ul>
@@ -137,4 +137,34 @@ export const TaskInput = styled(BaseInput)`
 export const MinutesAmountInput = styled(BaseInput)`
   width: 4rem;
 `;
+~~~~
+----------
+
+<h2 id="inputs">Aprimorando Inputs</h2>
+
+Em um dos inputs pode configurar o valor da entrada usando atributos html
+
+~~~~tsx
+    <MinutesAmountInput type="number" id="minutesAmount" placeholder="60" step={5} min={5} max={60}/>
+~~~~
+
+Podemos criar uma lista de dados que pode ser usada como lista de opções para um dos inputs sem que seja um select. Cria um datalist que se conecta com o input através do id com a list.
+~~~~tsx
+<TaskInput type="text" id="task" list="taks-suggestion" placeholder="Dê um nome para o seu projeto" />
+
+<datalist id='taks-suggestion'>
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option>
+      <option value="4"></option>
+</datalist>
+~~~~
+
+Em um dos inputs mostra um seta pra baixo. Para remover, usa essa configuração de Estilos
+
+~~~~ts
+  /* Remove arrow down */
+  &::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
 ~~~~
