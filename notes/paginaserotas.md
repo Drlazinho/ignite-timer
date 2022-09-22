@@ -5,8 +5,7 @@
 <li><a href="#headerENavLink">Header e Navlink</a></li>
 <li><a href="#Home">Styled-components - um component herdando de outro</a></li>
 <li><a href="#inputs">Aprimorando Inputs</a></li>
-<li><a href="#paginaHistory">Cores & Fonte</a></li>
-<li><a href="#status">Configuração Eslint</a></li>
+<li><a href="#status">Status</a></li>
 </ul>
 
 ----------
@@ -167,4 +166,36 @@ Em um dos inputs mostra um seta pra baixo. Para remover, usa essa configuração
   &::-webkit-calendar-picker-indicator {
     display: none !important;
   }
+~~~~
+
+----------
+
+<h2 id="status">Status</h2>
+
+~~~~ts
+// É definido como constante pois o valor será utilizado para pegar as cores do themeProvider, se não declarado como constante, os valores serão retornados como qualquer string causando erro no código.
+const STATUS_COLOR = {
+  yellow: 'yellow-500',
+  red: 'red-500',
+  green: 'green-500'
+} as const
+
+// A interface usar como valor as chaves do tipo da STATUS_COLOR, isso facilita na adição de mais cores alterando apenas o STATUS COLOR
+interface StatusProps {
+  statusColor: keyof typeof STATUS_COLOR
+}
+
+export const Status = styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  &::before{
+    content: '';
+    width: .5rem;
+    height: .5rem;
+    border-radius: 9999px;
+    background-color:${(props) => props.theme[STATUS_COLOR[props.statusColor]]};
+  }
+`;
 ~~~~
