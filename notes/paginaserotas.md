@@ -2,7 +2,7 @@
 
 <ul>
 <li><a href="#routerdom">React Router Dom</a></li>
-<li><a href="#layouDeRotas">Layout de Rotas</a></li>
+<li><a href="#headerENavLink">Header e Navlink</a></li>
 <li><a href="#header&layout">Tipagem de temas</a></li>
 <li><a href="#paginaHome">Estilos Globais</a></li>
 <li><a href="#paginaHistory">Cores & Fonte</a></li>
@@ -92,6 +92,29 @@ export function Router() {
         <Route path="/history" element={<History />} />
       </Route>
     </Routes>
+  )
+}
+~~~~
+
+<h2 id="headerENavLink">Header e Navlink</h2>
+
+O NavLink e Link do react-route-dom é um componente que permite levar o usuário para a página, o NavLink pode ser correspondido como tag `<a></a>`. O NavLink dar a possibilidade de interagir com a página ativa.
+
+~~~~tsx
+import { NavLink } from 'react-router-dom'
+
+export function Header() {
+  return (
+    <HeaderContainer>
+      <nav>
+        <NavLink to="/" title="Timer">
+          <Timer size={24} />
+        </NavLink>
+        <NavLink to="/history" title="Histórico">
+          <Scroll size={24} />
+        </NavLink>
+      </nav>
+    </HeaderContainer>
   )
 }
 ~~~~
