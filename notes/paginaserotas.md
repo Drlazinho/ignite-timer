@@ -3,7 +3,7 @@
 <ul>
 <li><a href="#routerdom">React Router Dom</a></li>
 <li><a href="#headerENavLink">Header e Navlink</a></li>
-<li><a href="#header&layout">Tipagem de temas</a></li>
+<li><a href="#Home">Styled-components - um component herdando de outro</a></li>
 <li><a href="#paginaHome">Estilos Globais</a></li>
 <li><a href="#paginaHistory">Cores & Fonte</a></li>
 <li><a href="#status">Configuração Eslint</a></li>
@@ -95,6 +95,7 @@ export function Router() {
   )
 }
 ~~~~
+----------
 
 <h2 id="headerENavLink">Header e Navlink</h2>
 
@@ -117,4 +118,23 @@ export function Header() {
     </HeaderContainer>
   )
 }
+~~~~
+----------
+
+<h2 id="Home">Styled-components - um component herdando de outro</h2>
+
+Na estilização da Home, os components inputs possuem estilização semelhantes, com styled-components pode criar um component base que pode ser usada em outros components
+
+~~~~ts
+const BaseInput = styled.input`
+  background: transparent;
+`;
+
+// Estilos usando o BaseInput como Base
+export const TaskInput = styled(BaseInput)`
+  flex: 1;
+`;
+export const MinutesAmountInput = styled(BaseInput)`
+  width: 4rem;
+`;
 ~~~~
