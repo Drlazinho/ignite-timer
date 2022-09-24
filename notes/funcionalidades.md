@@ -21,3 +21,16 @@ useEffect(() => {
   }
 }, [activeCycle])
 ~~~~
+
+Componentes especificas de uma página podem ficar separado na pasta da página.
+
+---------
+### Prop Drilling
+
+O Prop Drilling é um termo utilizado para quando temos propriedades que estão se repassando em diversas camadas da nossa árvore de componentes.
+
+#### Problema
+Props Drilling --> Quando tem Muitas propriedades APENAS para comunicação entre componentes
+
+#### Solução
+Context API ==> Permite compartilharmos informações entre VÁRIOS componentes ao mesmo tempo.
