@@ -7,3 +7,6 @@ Aplicativo Pomodoro em React-typescript
 <ul>
   <li><a>Estrutura da Aplicação</a></li>
 </ul>
+
+### Immer
+A biblioteca Immer ajuda a lidar com os dados da  aplicação sem ter que se preocupar com a imutabilidade do react.
