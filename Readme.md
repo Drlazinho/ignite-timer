@@ -38,11 +38,6 @@ A biblioteca Immer ajuda a lidar com os dados da  aplicação sem ter que se pre
 
 -------------
 
-### Deploy 
-Para facilitar a visualização da aplicação, ela já foi colocada no ar com auxílio do [vercel](https://vercel.com/), assim como foi solicitado , e seu deploy pode ser acessado no seguinte link: [ignite-timer](https://ignite-timer-g64a.vercel.app/)
-
-Além disso, pode-se optar ainda por clonar este repositório e utilizar, por exemplo,  lendo as instruções a seguir.
-
 ### Executando Localmente
 1. Primeiro passo
 ```
